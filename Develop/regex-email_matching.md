@@ -12,7 +12,7 @@ Here's the regex pattern:
 
 Code snippet and it's expected output - 
 
-<!-- const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
 console.log(emailRegex.test("user@example.com")); // true
 console.log(emailRegex.test("john.doe123@gmail.com")); // true
@@ -24,7 +24,7 @@ console.log(emailRegex.test("notanemail")); // false
 console.log(emailRegex.test("user@example")); // false
 console.log(emailRegex.test("@example.com")); // false
 console.log(emailRegex.test("user@.com")); // false
-console.log(emailRegex.test("user@123.456")); // false -->
+console.log(emailRegex.test("user@123.456")); // false
 
 
 ## Table of Contents
