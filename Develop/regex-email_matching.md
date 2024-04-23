@@ -63,8 +63,8 @@ Example-
 
 ```md
 const testString1 = "123";         // Should match (length: 3)
-const testString3 = "1";           // Should not match (length: 1)
-const testString4 = "123456789";   // Should not match (length: 9)
+const testString2 = "1";           // Should not match (length: 1)
+const testString3 = "123456789";   // Should not match (length: 9)
 ```
 
 also - 
@@ -78,6 +78,29 @@ also -
 ### Grouping Constructs
 
 Grouping constructs, denoted by parentheses (), allow us to group parts of the regex together. They allows us to group parts of the regex together, apply quantifiers to those grouped parts, capture matched substrings for later use, and apply alternation to multiple characters or subpatterns.
+
+Example-
+
+The outermost grouping construct () captures the entire email address.
+Inside this group, we have three more groups:
+( ): Captures the username part.
+( ): Captures the domain part.
+( ): Captures the top-level domain part.
+
+
+```md
+const emailRegex = /^(([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6}))$/;
+
+const email = "john.doe@example.com";
+const match = email.match(emailRegex);
+
+if (match) {
+  console.log("Full email:", match[1]); // Full email address
+  console.log("Username:", match[2]);   // Username part
+  console.log("Domain:", match[3]);     // Domain part
+  console.log("Top-Level Domain:", match[4]); // Top-Level Domain part
+}
+```
 
 ### Bracket Expressions
 
@@ -103,6 +126,19 @@ Example : include \d for digits and \w for word characters.
 
 The OR operator | allows us to specify alternative matches. It's commonly used within bracket expressions or grouping constructs to match different patterns.
 
+Example - 
+
+```md
+const emailRegex = /^(([a-z0-9_\.-]+)@([\da-z\.-]+)\.(com|net|org))$/;
+
+const email1 = "abc@xyz.com";   // Should match
+const email2 = "test@test.net";         // Should match
+const email3 = "user@domain.org";       // Should match
+const email4 = "invalid_email@gmail.xyz"; // Should not match
+const email5 = "user@example.gov.in";      // Should not match
+```
+Here the OR operator allows the regex to match email addresses with ".com", ".net", or ".org" top-level domains.
+
 ### Flags
 
 Flags are optional modifiers that affect how the regex engine interprets the pattern. 
@@ -115,8 +151,30 @@ Character escapes are denoted by a backslash \, allows us to match special chara
 
 For example, the open curly brace ({) is used to begin a quantifier, \. matches a literal dot character etc.
 
+Or if we want to add a special character, we can implement by folloing,
+
+```md
+// Original email regex pattern without character escapes
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.(com|net|org)$/;
+
+// Test email string with special characters
+const testEmail = "test.email*test@example.com";
+
+// Test the regex pattern without character escapes
+console.log(emailRegex.test(testEmail)); // Output: false as special character is not matched
+
+// Modify the regex pattern with character escapes to match special characters
+const emailRegexWithEscapes = /^([a-z0-9_\.-]*)@([\da-z\.-]+)\.(com|net|org)$/;
+
+// Test the modified regex pattern with character escapes
+console.log(emailRegexWithEscapes.test(testEmail)); // Output: true as special character is matched
+
+```
+
 ## Author
 
 This tutorial was written by Gibin M George. 
 
 Github -  https://github.com/GibinMGeorge
+
+Linedin - : https://www.linkedin.com/in/gibin-m-george-a71994244
