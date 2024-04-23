@@ -14,27 +14,16 @@ Code snippet and it's expected output -
 
 ```md
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-
 console.log(emailRegex.test("user@example.com")); // true
-
 console.log(emailRegex.test("john.doe123@gmail.com")); // true
-
 console.log(emailRegex.test("jane_doe-123@yahoo.co.uk")); // true
-
 console.log(emailRegex.test("info@company.com")); // true
-
 console.log(emailRegex.test("support123@domain.net")); // true
 
-
-
 console.log(emailRegex.test("notanemail")); // false
-
 console.log(emailRegex.test("user@example")); // false
-
 console.log(emailRegex.test("@example.com")); // false
-
 console.log(emailRegex.test("user@.com")); // false
-
 console.log(emailRegex.test("user@123.456")); // false
 ```
 
@@ -56,9 +45,27 @@ console.log(emailRegex.test("user@123.456")); // false
 
 Anchors specify the position in the string where the pattern should match. In our regex, ^ denotes the start of the string, and $ denotes the end.
 
+Example-
+
+```md
+const regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+
+// Test email addresses
+const email1 = "example@email.com"; // Should match
+const email2 = "example_email.com"; // Should not match
+```
+
 ### Quantifiers
 
 Quantifiers define how many times a specific character or group should appear in the string. For example, {2,6} in our regex means the preceding expression should occur between 2 and 6 times.
+
+Example-
+
+```md
+const testString1 = "123";         // Should match (length: 3)
+const testString3 = "1";           // Should not match (length: 1)
+const testString4 = "123456789";   // Should not match (length: 9)
+```
 
 also - 
 
