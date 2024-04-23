@@ -82,9 +82,13 @@ Grouping constructs, denoted by parentheses (), allow us to group parts of the r
 Example-
 
 The outermost grouping construct () captures the entire email address.
+
 Inside this group, we have three more groups:
+
 ( ): Captures the username part.
+
 ( ): Captures the domain part.
+
 ( ): Captures the top-level domain part.
 
 
